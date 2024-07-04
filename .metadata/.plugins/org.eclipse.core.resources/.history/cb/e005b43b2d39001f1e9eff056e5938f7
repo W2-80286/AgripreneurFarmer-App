@@ -1,0 +1,77 @@
+package model;
+
+import java.util.Set;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
+//import jakarta.persistence.JoinTable;
+
+@Entity
+public class Agripreneur {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    private Long agripreneurId;
+	@Column
+    private String name;
+	@Column
+    private String idNo;
+	@Column
+    private String ventureName;
+	@Column
+    private double serviceCost;
+	@Column
+    private String state;
+	@Column
+    private String district;
+	@Column
+    private String taluka;
+	@Column
+    private String villege;
+	@Column
+    private String pincode;
+	@Column
+    private int mobileNumber;
+	@Column
+    private int landlineNumber;
+	@Column
+    private String email;
+	@Column
+    private String ntiName;
+	@Column
+    private double latitude;
+	@Column
+    private double longitude;
+	@Column
+    private String restrictedInfo;
+	@Column
+    private double annualTurnover;
+	@Column
+    private double annualIncome;
+	@Column
+    private int personsEmployed;
+	@Column
+    private int farmersCovered;
+	@Column
+    private int villagesCovered;
+	@Column
+    private boolean bankLoan;
+	@Column
+    private boolean subsidy;
+	@Column
+    private String keywords;
+    @ManyToMany
+    @JoinTable(
+        name = "agripreneur_services",
+        joinColumns = @JoinColumn(name = "agripreneur_id"),
+        inverseJoinColumns = @JoinColumn(name = "service_id")
+    )
+    private Set<Service> services;
+
+    }

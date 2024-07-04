@@ -1,0 +1,10 @@
+package repository;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import model.Agripreneur;
+@SpringBootApplication
+public interface AgripreneurRepository extends JpaRepository<Agripreneur, Long> {
+
+}

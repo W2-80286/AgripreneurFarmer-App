@@ -1,0 +1,17 @@
+package com.agri;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+@EntityScan("com.agri.model")
+@EnableJpaRepositories("com.agri.repository")
+
+@SpringBootApplication
+public class AgripreneurFarmerAppApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(AgripreneurFarmerAppApplication.class, args);
+	}
+
+}

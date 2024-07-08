@@ -1,0 +1,57 @@
+package com.agri.service;
+
+import com.agri.dto.AgripreneurRegistrationDto;
+import com.agri.model.Agripreneur;
+import com.agri.model.Category;
+import com.agri.repository.AgripreneurRepository;
+import com.agri.repository.CategoryRepository;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class AgripreneurService {
+
+    @Autowired
+    private AgripreneurRepository agripreneurRepository;
+    
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+    public Agripreneur saveAgripreneur(AgripreneurRegistrationDto registrationDto) {
+    	Agripreneur agripreneur=new Agripreneur();
+    	agripreneur.setName(registrationDto.getName());
+    	agripreneur.setIdNo(registrationDto.getIdNo());
+    	agripreneur.setVentureName(registrationDto.getVentureName());
+    	agripreneur.setServiceCost(registrationDto.getServiceCost());
+        agripreneur.setPincode(registrationDto.getPincode());
+        agripreneur.setMobileNumber(registrationDto.getMobileNumber());
+        agripreneur.setLandlineNumber(registrationDto.getLandlineNumber());
+        agripreneur.setEmail(registrationDto.getEmail());
+        agripreneur.setNtiName(registrationDto.getNtiName());
+        agripreneur.setLatitude(registrationDto.getLatitude());
+        agripreneur.setLongitude(registrationDto.getLongitude());
+        agripreneur.setRestrictedInfo(registrationDto.getRestrictedInfo());
+        agripreneur.setAnnualTurnover(registrationDto.getAnnualTurnover());
+        agripreneur.setAnnualIncome(registrationDto.getAnnualIncome());
+        agripreneur.setPersonsEmployed(registrationDto.getPersonsEmployed());
+        agripreneur.setFarmersCovered(registrationDto.getFarmersCovered());
+        agripreneur.setVillagesCovered(registrationDto.getVillagesCovered());
+        agripreneur.setBankLoan(registrationDto.isBankLoan());
+        agripreneur.setSubsidy(registrationDto.isSubsidy());
+        agripreneur.setKeywords(registrationDto.getKeywords());
+        
+        
+        Optional<Category> optionalCategory = categoryRepository.findById(registrationDto.getCategoryId());
+        if (optionalCategory.isPresent()) {
+            agripreneur.setServiceCategory(optionalCategory.get());
+        } else {
+            throw new RuntimeException("Category not found");
+        }
+
+
+        return agripreneurRepository.save(agripreneur);
+    }
+}

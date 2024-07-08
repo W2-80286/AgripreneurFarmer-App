@@ -1,0 +1,42 @@
+package com.agri.service;
+
+import com.agri.dto.AgripreneurRegistrationDto;
+import com.agri.model.Agripreneur;
+import com.agri.repository.AgripreneurRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class AgripreneurService {
+
+    @Autowired
+    private AgripreneurRepository agripreneurRepository;
+
+    public Agripreneur saveAgripreneur(AgripreneurRegistrationDto registrationDto) {
+    	Agripreneur agripreneur=new Agripreneur();
+    	agripreneur.setName(registrationDto.getName());
+    	agripreneur.setIdNo(registrationDto.getIdNo());
+    	agripreneur.setVentureName(registrationDto.getVentureName());
+    	agripreneur.setServiceCost(registrationDto.getServiceCost());
+    	agripreneur.setState(registrationDto.getStateId());
+    	
+        agripreneur.setPincode(registrationDto.getPincode());
+        agripreneur.setMobileNumber(registrationDto.getMobileNumber());
+        agripreneur.setLandlineNumber(registrationDto.getLandlineNumber());
+        agripreneur.setEmail(registrationDto.getEmail());
+        agripreneur.setNtiName(registrationDto.getNtiName());
+        agripreneur.setLatitude(registrationDto.getLatitude());
+        agripreneur.setLongitude(registrationDto.getLongitude());
+        agripreneur.setRestrictedInfo(registrationDto.getRestrictedInfo());
+        agripreneur.setAnnualTurnover(registrationDto.getAnnualTurnover());
+        agripreneur.setAnnualIncome(registrationDto.getAnnualIncome());
+        agripreneur.setPersonsEmployed(registrationDto.getPersonsEmployed());
+        agripreneur.setFarmersCovered(registrationDto.getFarmersCovered());
+        agripreneur.setVillagesCovered(registrationDto.getVillagesCovered());
+        agripreneur.setBankLoan(registrationDto.isBankLoan());
+        agripreneur.setSubsidy(registrationDto.isSubsidy());
+        agripreneur.setKeywords(registrationDto.getKeywords());
+
+        return agripreneurRepository.save(agripreneur);
+    }
+}

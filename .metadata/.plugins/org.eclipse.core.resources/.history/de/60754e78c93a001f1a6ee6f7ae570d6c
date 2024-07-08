@@ -1,0 +1,45 @@
+package com.agri.dto;
+
+import javax.validation.constraints.NotNull;
+
+public class AgripreneurRegistrationDto {
+    private String name;
+    private String idNo;
+    private String ventureName;
+    
+    @NotNull
+    private Long categoryId; // Field for category ID selection
+    
+    private double serviceCost;
+    
+    @NotNull
+    private Long stateId;
+    
+    @NotNull
+    private Long districtId;
+    
+    @NotNull
+    private Long talukaId;
+    
+    @NotNull
+    private Long villageId;
+    
+    private String pincode;
+    private String mobileNumber;
+    private String landlineNumber;
+    private String email;
+    private String ntiName;
+    private double latitude;
+    private double longitude;
+    private String restrictedInfo;
+    private double annualTurnover;
+    private double annualIncome;
+    private int personsEmployed;
+    private int farmersCovered;
+    private int villagesCovered;
+    private boolean bankLoan;
+    private boolean subsidy;
+    private String keywords;
+    
+    // Getters and setters...
+}

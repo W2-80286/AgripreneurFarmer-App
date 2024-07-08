@@ -1,0 +1,15 @@
+package com.agri.model;
+
+import java.util.List;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Taluka {
+	
+	private Long id;
+	private String name;
+	private District district;
+	private List<Village>villages;
+
+}

@@ -1,0 +1,60 @@
+package com.agri.service;
+
+import com.agri.dto.AgripreneurRegistrationDto;
+import com.agri.model.Agripreneur;
+import com.agri.model.Category;
+import com.agri.model.State;
+import com.agri.model.District;
+import com.agri.model.Taluka;
+import com.agri.model.Village;
+import com.agri.repository.AgripreneurRepository;
+import com.agri.repository.CategoryRepository;
+import com.agri.repository.StateRepository;
+import com.agri.repository.DistrictRepository;
+import com.agri.repository.TalukaRepository;
+import com.agri.repository.VillageRepository;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class AgripreneurService {
+
+    @Autowired
+    private AgripreneurRepository agripreneurRepository;
+    
+    @Autowired
+    private CategoryRepository categoryRepository;
+    
+    @Autowired
+    private StateRepository stateRepository;
+    
+    @Autowired
+    private DistrictRepository districtRepository;
+    
+    @Autowired
+    private TalukaRepository talukaRepository;
+    
+    @Autowired
+    private VillageRepository villageRepository;
+
+    public void validateAgripreneurRegistration(AgripreneurRegistrationDto registrationDto) {
+        if (registrationDto.getCategoryId() == null) {
+            throw new IllegalArgumentException("Category ID must not be null");
+        }
+        if (registrationDto.getStateId() == null) {
+            throw new IllegalArgumentException("State ID must not be null");
+        }
+        if (registrationDto.getDistrictId() == null) {
+            throw new IllegalArgumentException("District ID must not be null");
+        }
+        if (registrationDto.getTalukaId() == null) {
+            throw new IllegalArgumentException("Taluka ID must not be null");
+        }
+        if (registrationDto.getVillageId() == null) {
+            throw new IllegalArgumentException("Village ID must not be null");
+        }
+    }   
+}

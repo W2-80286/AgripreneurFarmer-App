@@ -1,28 +1,42 @@
 package com.agri.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name="Agripreneur")
+@Table(name = "Agripreneur")
 public class Agripreneur {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "agripreneur_id")
+    @Column(name = "agripreneur_id")
     private Long agripreneurId;
-    @Column(name = "name")
+
     private String name;
     private String idNo;
     private String ventureName;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category serviceCategory;
+
     private double serviceCost;
-    private String state;
-    private String district;
-    private String taluka;
-    private String villege;
+
+    @ManyToOne
+    @JoinColumn(name = "state_id")
+    private State state;
+
+    @ManyToOne
+    @JoinColumn(name = "district_id")
+    private District district;
+
+    @ManyToOne
+    @JoinColumn(name = "taluka_id")
+    private Taluka taluka;
+
+    @ManyToOne
+    @JoinColumn(name = "village_id")
+    private Village village;
+
     private String pincode;
     private String mobileNumber;
     private String landlineNumber;
@@ -39,8 +53,11 @@ public class Agripreneur {
     private boolean bankLoan;
     private boolean subsidy;
     private String keywords;
-   
-   	public Long getAgripreneurId() {
+
+    @OneToMany(mappedBy = "agripreneur", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AgripreneurImage> images;
+
+	public Long getAgripreneurId() {
 		return agripreneurId;
 	}
 
@@ -72,6 +89,14 @@ public class Agripreneur {
 		this.ventureName = ventureName;
 	}
 
+	public Category getServiceCategory() {
+		return serviceCategory;
+	}
+
+	public void setServiceCategory(Category serviceCategory) {
+		this.serviceCategory = serviceCategory;
+	}
+
 	public double getServiceCost() {
 		return serviceCost;
 	}
@@ -80,36 +105,36 @@ public class Agripreneur {
 		this.serviceCost = serviceCost;
 	}
 
-	public String getState() {
+	public State getState() {
 		return state;
 	}
 
-	public void setState(String state) {
+	public void setState(State state) {
 		this.state = state;
 	}
 
-	public String getDistrict() {
+	public District getDistrict() {
 		return district;
 	}
 
-	public void setDistrict(String district) {
+	public void setDistrict(District district) {
 		this.district = district;
 	}
 
-	public String getTaluka() {
+	public Taluka getTaluka() {
 		return taluka;
 	}
 
-	public void setTaluka(String taluka) {
+	public void setTaluka(Taluka taluka) {
 		this.taluka = taluka;
 	}
 
-	public String getVillege() {
-		return villege;
+	public Village getVillage() {
+		return village;
 	}
 
-	public void setVillege(String villege) {
-		this.villege = villege;
+	public void setVillage(Village village) {
+		this.village = village;
 	}
 
 	public String getPincode() {
@@ -120,9 +145,6 @@ public class Agripreneur {
 		this.pincode = pincode;
 	}
 
-	
-
-	
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
@@ -243,4 +265,12 @@ public class Agripreneur {
 		this.keywords = keywords;
 	}
 
-    }
+	public List<AgripreneurImage> getImages() {
+		return images;
+	}
+
+	public void setImages(List<AgripreneurImage> images) {
+		this.images = images;
+	}
+    
+}

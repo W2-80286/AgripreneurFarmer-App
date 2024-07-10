@@ -21,9 +21,16 @@
     <properties>
         <java.version>11</java.version>
     </properties>
+    
 
     <dependencies>
+    
         <!-- Spring Boot Dependencies -->
+        <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -32,7 +39,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <!-- Development Tools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -40,7 +46,21 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-
+        
+          <dependency> 
+         <groupId>io.jsonwebtoken</groupId> 
+         <artifactId>jjwt</artifactId> 
+         <version>0.9.1</version> 
+      </dependency>
+      <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+    <dependency>
+        <groupId>com.twilio.sdk</groupId>
+        <artifactId>twilio</artifactId>
+        <version>8.31.1</version>
+    </dependency>
         <!-- MySQL Connector -->
         <dependency>
             <groupId>com.mysql</groupId>
@@ -57,6 +77,12 @@
 
         <!-- Hibernate Validator Dependencies -->
         <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        
+         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>6.2.0.Final</version>
@@ -65,12 +91,10 @@
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>2.0.1.Final</version>
+            
         </dependency>
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.el</artifactId>
-            <version>3.0.0</version>
-        </dependency>
+
+       
     </dependencies>
 
     <build>
@@ -81,5 +105,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

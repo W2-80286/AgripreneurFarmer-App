@@ -1,6 +1,9 @@
 package com.agri.dto;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class AgripreneurRegistrationDto {
@@ -19,14 +22,26 @@ public class AgripreneurRegistrationDto {
 
     @NotNull(message = "Village ID must not be null")
     private Long villageId;
-
+    
+    @NotBlank(message = "Name must not be blank")
     private String name;
+    
+    @NotBlank(message = "ID number must not be blank")
     private String idNo;
+    
     private String ventureName;
     private Double serviceCost;
+    
+    @NotBlank(message = "Pincode must not be blank")
+    @Size(min = 6, max = 6, message = "Pincode must be exactly 6 digits")
     private String pincode;
+    
+    @NotBlank(message = "Mobile number must not be blank")
+    @Size(min = 10, max = 10, message = "Mobile number must be exactly 10 digits")
     private String mobileNumber;
     private String landlineNumber;
+    
+    @NotBlank(message = "Email must not be blank")
     private String email;
     private String ntiName;
     private Double latitude;
